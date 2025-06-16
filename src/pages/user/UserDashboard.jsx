@@ -17,11 +17,9 @@ import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Footer from '../../components/Footer';
 
 export default function UserDashboard() {
   const navigate = useNavigate();
-  const [wishlist, setWishlist] = useState([]);
   const theme = useTheme();
 
   const actions = [
