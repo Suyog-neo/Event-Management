@@ -1,5 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+<<<<<<< HEAD
+=======
+import { Link } from 'react-router-dom';
+
+>>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
 import {
   Box,
   Typography,
@@ -12,7 +17,10 @@ import {
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import EventIcon from '@mui/icons-material/Event';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+<<<<<<< HEAD
 import BackButton from '../../components/BackButton'; // ✅ import reusable back button
+=======
+>>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
 
 export default function EventBookings() {
   const bookings = useSelector((state) => state.bookings);
@@ -21,7 +29,10 @@ export default function EventBookings() {
     <Fade in timeout={500}>
       <Box
         sx={{
+<<<<<<< HEAD
           position: 'relative', // needed for positioning back button
+=======
+>>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
           height: 'calc(100vh - 130px)',
           overflowY: 'auto',
           px: 2,
@@ -31,9 +42,12 @@ export default function EventBookings() {
           background: '#ffffff',
         }}
       >
+<<<<<<< HEAD
         {/* ✅ Back Button (top-right, icon-only) */}
         <BackButton sx={{ left: 16, right: 'auto' }} />
 
+=======
+>>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
         <Typography
           variant="h3"
           fontWeight="bold"
@@ -45,9 +59,35 @@ export default function EventBookings() {
         </Typography>
 
         {bookings.length === 0 ? (
+<<<<<<< HEAD
           <Typography variant="h6" align="center" color="text.secondary">
             You haven’t booked any events yet.
           </Typography>
+=======
+       <Box v align="center" color="text.secondary">
+            <Box component='img' src='/noresultsfound.svg'
+              sx={{
+                height: '20vh',
+                width: '20vw'
+              }}
+            >
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Typography ariant="h5" component={Link} to='/user/events'
+                sx={{
+                  border: '2px solid red',
+                  borderRadius: 1,
+                  width: '10vw',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                Expores Events
+              </Typography>
+            </Box>
+
+          </Box>
+>>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
         ) : (
           <Grid container spacing={4} justifyContent="center">
             {bookings.map((event, i) => (
