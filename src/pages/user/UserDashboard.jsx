@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Typography,
@@ -10,9 +10,12 @@ import {
   Slide,
   Divider,
   useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import EventNoteIcon from '@mui/icons-material/EventNote'; // New icon
+import LocalOfferIcon from '@mui/icons-material/LocalOffer'; // New icon
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -21,6 +24,7 @@ import 'slick-carousel/slick/slick-theme.css';
 export default function UserDashboard() {
   const navigate = useNavigate();
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const actions = [
     {
@@ -33,45 +37,99 @@ export default function UserDashboard() {
       icon: <BookmarkIcon sx={{ fontSize: 40, color: '#7b1fa2' }} />,
       onClick: () => navigate('/user/bookings'),
     },
+    {
+      title: 'Upcoming Events',
+      icon: <EventNoteIcon sx={{ fontSize: 40, color: '#f57c00' }} />,
+      onClick: () => navigate('/user/UpcomingEvents'),
+    },
+    {
+      title: 'Exclusive Offers',
+      icon: <LocalOfferIcon sx={{ fontSize: 40, color: '#388e3c' }} />,
+      onClick: () => navigate('/user/offers'),
+    },
   ];
 
   const carouselItems = [
     {
-      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+      image:
+        'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80',
       caption: 'Book Your Favorite Events',
     },
     {
-      image: 'https://images.unsplash.com/photo-1619229667009-e7e51684e8e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzJ8fGNvbmNlcnR8ZW58MHwwfDB8fHww',
+      image:
+        'https://images.unsplash.com/photo-1619229667009-e7e51684e8e6?auto=format&fit=crop&w=1600&q=80',
       caption: 'Experience Live Concerts',
     },
     {
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+      image:
+        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80',
       caption: 'Join Exciting Workshops',
     },
   ];
 
+  // Updated categories with images for better UI
   const categories = [
-    { title: 'Technology', description: 'Explore tech events and conferences.' },
-    { title: 'Entertainment', description: 'Enjoy concerts, movies, and festivals.' },
-    { title: 'Business', description: 'Network at business meetups and expos.' },
-    { title: 'Art', description: 'Discover art exhibitions and creative workshops.' },
-    { title: 'Sports', description: 'Participate in sports events and competitions.' },
-    { title: 'Wellness', description: 'Relax with yoga retreats and wellness programs.' },
+    {
+      title: 'Technology',
+      description: 'Explore tech events and conferences.',
+      image:
+        'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Entertainment',
+      description: 'Enjoy concerts, movies, and festivals.',
+      image:
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Business',
+      description: 'Network at business meetups and expos.',
+      image:
+        'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Art',
+      description: 'Discover art exhibitions and creative workshops.',
+      image:
+        'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Sports',
+      description: 'Participate in sports events and competitions.',
+      image:
+        'https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Wellness',
+      description: 'Relax with yoga retreats and wellness programs.',
+      image:
+        'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80',
+    },
   ];
 
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3500,
+    autoplaySpeed: 4000,
+    adaptiveHeight: true,
+    arrows: !isMobile,
   };
 
   return (
     <Fade in timeout={500}>
-      <Box sx={{ background: '#fdfdfd', minHeight: '100vh', px: 2, pt: 4, pb: 8 }}>
+      <Box
+        sx={{
+          background: '#fdfdfd',
+          minHeight: '100vh',
+          px: 2,
+          pt: 4,
+          pb: 8,
+        }}
+      >
         <Box
           sx={{
             maxWidth: '1400px',
@@ -82,18 +140,19 @@ export default function UserDashboard() {
             overflow: 'hidden',
           }}
         >
+          {/* TITLE */}
           <Typography
             variant="h3"
             fontWeight="bold"
             gutterBottom
             textAlign="center"
-            color="#3f51b5"
+            color={theme.palette.primary.main}
             sx={{ fontSize: { xs: '2rem', md: '2.8rem' }, mt: 4 }}
           >
-            User Dashboard
+            Welcome to Your Dashboard
           </Typography>
 
-          {/* Carousel */}
+          {/* CAROUSEL */}
           <Slider {...sliderSettings} style={{ marginBottom: '2rem' }}>
             {carouselItems.map((item, index) => (
               <Box
@@ -109,11 +168,11 @@ export default function UserDashboard() {
                 <img
                   src={item.image}
                   alt={item.caption}
+                  loading="lazy"
                   onError={(e) => {
                     e.target.onerror = null;
-                    //e.target.src = 'https://via.placeholder.com/800x300?text=Image+Unavailable';
-                    e.target.src = 'https://dummyimage.com/800x300/cccccc/000000&text=Image+Unavailable';
-
+                    e.target.src =
+                      'https://dummyimage.com/800x300/cccccc/000000&text=Image+Unavailable';
                   }}
                   style={{
                     width: '100%',
@@ -124,15 +183,12 @@ export default function UserDashboard() {
                 <Box
                   sx={{
                     position: 'absolute',
-                    top: 0,
-                    left: 0,
+                    bottom: 0,
                     width: '100%',
-                    height: '100%',
-                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6))',
+                    background:
+                      'linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1))',
                     color: 'white',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    p: 3,
+                    p: 2,
                   }}
                 >
                   <Typography variant="h6" fontWeight="bold">
@@ -143,8 +199,15 @@ export default function UserDashboard() {
             ))}
           </Slider>
 
-          {/* Action Cards */}
-          <Typography variant="h5" textAlign="center" mt={4} mb={2} fontWeight="bold" color="text.primary">
+          {/* QUICK ACTIONS */}
+          <Typography
+            variant="h5"
+            textAlign="center"
+            mt={4}
+            mb={2}
+            fontWeight="bold"
+            color="text.primary"
+          >
             Quick Actions
           </Typography>
 
@@ -156,17 +219,22 @@ export default function UserDashboard() {
                     sx={{
                       height: '100%',
                       borderRadius: 4,
-                      background: '#f5f5f5',
-                      boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
+                      background: theme.palette.grey[100],
                       transition: 'transform 0.3s ease',
                       '&:hover': {
                         transform: 'scale(1.05)',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                        boxShadow: 6,
                       },
                     }}
                   >
-                    <CardActionArea onClick={action.onClick} sx={{ p: 3, textAlign: 'center' }}>
-                      <Box mb={1}>{action.icon}</Box>
+                    <CardActionArea
+                      onClick={action.onClick}
+                      sx={{ p: 3, textAlign: 'center' }}
+                      aria-label={action.title}
+                    >
+                      <Box mb={1} aria-hidden>
+                        {action.icon}
+                      </Box>
                       <CardContent>
                         <Typography variant="h6" fontWeight="medium">
                           {action.title}
@@ -181,47 +249,84 @@ export default function UserDashboard() {
 
           <Divider sx={{ my: 5 }} />
 
-          {/* Categories Section */}
+          {/* EXPLORE CATEGORIES */}
           <Box sx={{ px: 3, pb: 5 }}>
-            <Typography variant="h5" textAlign="center" mb={4} fontWeight="bold" color="text.primary">
-              Event Categories
+            <Typography
+              variant="h5"
+              textAlign="center"
+              mb={4}
+              fontWeight="bold"
+              color="text.primary"
+            >
+              Explore Categories
             </Typography>
 
             <Grid container spacing={3} justifyContent="center">
               {categories.map((category, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                   <Card
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => navigate(`/user/events?category=${category.title}`)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        navigate(`/user/events?category=${category.title}`);
+                      }
+                    }}
                     sx={{
-                      cursor: 'pointer',
+                      position: 'relative',
                       borderRadius: 3,
-                      background: index % 2 === 0 ? '#0288d1' : '#7b1fa2',
-                      color: 'white',
-                      transition: '0.3s',
+                      overflow: 'hidden',
+                      cursor: 'pointer',
+                      height: 250,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-end',
+                      boxShadow: 3,
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                       '&:hover': {
                         transform: 'scale(1.03)',
-                        boxShadow: 10,
-                        background: index % 2 === 0 ? '#0277bd' : '#6a1b9a',
+                        boxShadow: 6,
                       },
                     }}
-                    onClick={() => navigate(`/user/events?category=${category.title}`)}
                   >
-                    <CardActionArea>
-                      <CardContent>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom>
-                          {category.title}
-                        </Typography>
-                        <Typography variant="body2" color="inherit">
-                          {category.description}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
+                    <Box
+                      component="img"
+                      src={category.image}
+                      alt={category.title}
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        zIndex: 1,
+                        filter: 'brightness(0.75)',
+                      }}
+                    />
+
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        zIndex: 2,
+                        p: 2,
+                        background:
+                          'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1))',
+                        color: 'white',
+                      }}
+                    >
+                      <Typography variant="h6" fontWeight="bold">
+                        {category.title}
+                      </Typography>
+                      <Typography variant="body2">{category.description}</Typography>
+                    </Box>
                   </Card>
                 </Grid>
               ))}
             </Grid>
           </Box>
         </Box>
-
       </Box>
     </Fade>
   );

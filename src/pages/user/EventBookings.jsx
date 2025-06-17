@@ -12,6 +12,7 @@ import {
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import EventIcon from '@mui/icons-material/Event';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import BackButton from '../../components/BackButton'; // ✅ import reusable back button
 
 export default function EventBookings() {
   const bookings = useSelector((state) => state.bookings);
@@ -20,6 +21,7 @@ export default function EventBookings() {
     <Fade in timeout={500}>
       <Box
         sx={{
+          position: 'relative', // needed for positioning back button
           height: 'calc(100vh - 130px)',
           overflowY: 'auto',
           px: 2,
@@ -29,6 +31,9 @@ export default function EventBookings() {
           background: '#ffffff',
         }}
       >
+        {/* ✅ Back Button (top-right, icon-only) */}
+        <BackButton sx={{ left: 16, right: 'auto' }} />
+
         <Typography
           variant="h3"
           fontWeight="bold"

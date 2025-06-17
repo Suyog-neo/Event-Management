@@ -21,7 +21,6 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Slider from 'react-slick';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -33,8 +32,7 @@ import {
   Legend,
 } from 'chart.js';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import Carousel from '../../components/Carousel'; // adjust path if needed
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -122,7 +120,7 @@ export default function AdminDashboard() {
 
   const carouselItems = [
     {
-      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80',
       caption: 'Effortless Event Management',
     },
     {
@@ -130,20 +128,10 @@ export default function AdminDashboard() {
       caption: 'Track Bookings and Analytics',
     },
     {
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80',
       caption: 'Collaborate with Your Team',
     },
   ];
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1500,
-  };
 
   const chartData = {
     labels: events.map((e) => e.title),
@@ -158,11 +146,9 @@ export default function AdminDashboard() {
 
   const chartOptions = {
     responsive: true,
-    maintainAspectRatio: false, // important for responsive height
+    maintainAspectRatio: false,
     layout: {
-      padding: {
-        bottom: 30, // extra padding below chart so labels don’t get cut off
-      },
+      padding: { bottom: 30 },
     },
     plugins: {
       legend: { position: 'top' },
@@ -206,46 +192,7 @@ export default function AdminDashboard() {
           </Typography>
 
           {/* Carousel */}
-          <Slider {...sliderSettings} style={{ marginBottom: '2rem' }}>
-            {carouselItems.map((item, index) => (
-              <Box
-                key={index}
-                sx={{
-                  position: 'relative',
-                  height: 220,
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  boxShadow: 3,
-                }}
-              >
-                <img
-                  src={item.image}
-                  alt={item.caption}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                />
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    width: '100%',
-                    background: 'rgba(0,0,0,0.5)',
-                    color: 'white',
-                    py: 1,
-                    px: 2,
-                  }}
-                >
-                  <Typography variant="h6" fontWeight="bold">
-                    {item.caption}
-                  </Typography>
-                </Box>
-              </Box>
-            ))}
-          </Slider>
+          <Carousel items={carouselItems} />
 
           {/* Action Cards */}
           <Grid container spacing={4} justifyContent="center">
@@ -287,7 +234,7 @@ export default function AdminDashboard() {
               maxWidth: { xs: '100%', sm: '600px', md: '800px' },
               mx: 'auto',
               height: { xs: 350, sm: 400, md: 450 },
-              pb: 4, // padding bottom added for spacing
+              pb: 4,
             }}
           >
             <Typography
@@ -347,7 +294,7 @@ export default function AdminDashboard() {
           {/* Snackbar */}
           <Snackbar
             open={snackbarOpen}
-            autoHideDuration={3000}
+            autoHideDuration={1000}
             onClose={() => setSnackbarOpen(false)}
             message="Event created successfully!"
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
