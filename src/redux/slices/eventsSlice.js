@@ -10,11 +10,7 @@ const eventsSlice = createSlice({
       date: '2025-08-20',
       location: 'Pune',
       seats: 20,
-<<<<<<< HEAD
       image: '/images/tech.jpg',
-=======
-      image: '/public/images/tech.jpg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Workshop',
       category: 'Technology',
       details: 'An engaging summit exploring the latest in technology and innovation.',
@@ -26,11 +22,7 @@ const eventsSlice = createSlice({
       date: '2025-09-15',
       location: 'Mumbai',
       seats: 25,
-<<<<<<< HEAD
       image: '/images/music.jpg',
-=======
-      image: '/public/images/music.jpg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Concert',
       category: 'Entertainment',
       details: 'A vibrant music festival featuring renowned artists and bands.',
@@ -42,11 +34,7 @@ const eventsSlice = createSlice({
       date: '2025-09-22',
       location: 'Bangalore',
       seats: 15,
-<<<<<<< HEAD
       image: '/images/startup.jpeg',
-=======
-      image: '/public/images/startup.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Networking',
       category: 'Business',
       details: 'A meetup for entrepreneurs to network and share ideas.',
@@ -58,11 +46,7 @@ const eventsSlice = createSlice({
       date: '2025-10-01',
       location: 'Delhi',
       seats: 30,
-<<<<<<< HEAD
       image: '/images/art-expo.jpeg',
-=======
-      image: '/public/images/art-expo.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Exhibition',
       category: 'Art',
       details: 'An exhibition showcasing stunning artworks from various artists.',
@@ -74,11 +58,7 @@ const eventsSlice = createSlice({
       date: '2025-10-10',
       location: 'Ahmedabad',
       seats: 40,
-<<<<<<< HEAD
       image: '/images/food.jpeg',
-=======
-      image: '/public/images/food.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Festival',
       category: 'Food',
       details: 'A carnival celebrating diverse cuisines and culinary delights.',
@@ -90,11 +70,7 @@ const eventsSlice = createSlice({
       date: '2025-10-15',
       location: 'Ranthambore',
       seats: 12,
-<<<<<<< HEAD
       image: '/images/wild.jpg',
-=======
-      image: '/public/images/wild.jpg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Workshop',
       category: 'Photography',
       details: 'A camp for photography enthusiasts to capture wildlife moments.',
@@ -106,11 +82,7 @@ const eventsSlice = createSlice({
       date: '2025-10-22',
       location: 'Chennai',
       seats: 18,
-<<<<<<< HEAD
       image: '/images/health.jpg',
-=======
-      image: '/public/images/health.jpg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Conference',
       category: 'Technology',
       details: 'A conference discussing the impact of AI in the healthcare sector.',
@@ -122,11 +94,7 @@ const eventsSlice = createSlice({
       date: '2025-11-01',
       location: 'Hyderabad',
       seats: 20,
-<<<<<<< HEAD
       image: '/images/energy.png',
-=======
-      image: '/public/images/energy.png',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Exhibition',
       category: 'Environment',
       details: 'A fair promoting clean energy solutions and technologies.',
@@ -138,11 +106,7 @@ const eventsSlice = createSlice({
       date: '2025-11-10',
       location: 'Goa',
       seats: 10,
-<<<<<<< HEAD
       image: '/images/yoga.jpg',
-=======
-      image: '/public/images/yoga.jpg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Retreat',
       category: 'Wellness',
       details: 'A rejuvenating yoga retreat by the beach.',
@@ -154,11 +118,7 @@ const eventsSlice = createSlice({
       date: '2025-11-18',
       location: 'Kolkata',
       seats: 25,
-<<<<<<< HEAD
       image: '/images/film.jpeg',
-=======
-      image: '/public/images/film.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Movie Screening',
       category: 'Entertainment',
       details: 'An evening celebrating films and cultural performances.',
@@ -170,11 +130,7 @@ const eventsSlice = createSlice({
       date: '2025-11-24',
       location: 'Sriharikota',
       seats: 30,
-<<<<<<< HEAD
       image: '/images/space.jpeg',
-=======
-      image: '/public/images/space.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Conference',
       category: 'Technology',
       details: 'A conference exploring advancements in space technology.',
@@ -186,11 +142,7 @@ const eventsSlice = createSlice({
       date: '2025-12-05',
       location: 'Nagpur',
       seats: 15,
-<<<<<<< HEAD
       image: '/images/cric.jpeg',
-=======
-      image: '/public/images/cric.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Hackathon',
       category: 'Sports',
       details: 'A hackathon focused on analytics in cricket.',
@@ -202,11 +154,7 @@ const eventsSlice = createSlice({
       date: '2025-11-05',
       location: 'Chennai',
       seats: 50,
-<<<<<<< HEAD
       image: '/images/mnight.jpeg',
-=======
-      image: '/public/images/mnight.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Entertainment',
       category: 'Movies',
       details: 'Enjoy a relaxing evening with popular movies and snacks.',
@@ -218,11 +166,7 @@ const eventsSlice = createSlice({
       date: '2025-12-01',
       location: 'Kolkata',
       seats: 60,
-<<<<<<< HEAD
       image: '/images/sports.jpeg',
-=======
-      image: '/public/images/sports.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Sports',
       category: 'Sports',
       details: 'A thrilling sports event featuring various competitions and activities.',
@@ -234,11 +178,7 @@ const eventsSlice = createSlice({
       date: '2025-11-05',
       location: 'Hyderabad',
       seats: 50,
-<<<<<<< HEAD
       image: '/images/ai.jpeg',
-=======
-      image: '/public/images/ai.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Conference',
       category: 'Technology',
       details: 'A conference discussing the latest advancements in AI technology.',
@@ -286,11 +226,7 @@ const eventsSlice = createSlice({
       date: '2025-12-20',
       location: 'Bangalore',
       seats: 30,
-<<<<<<< HEAD
       image: '/images/drone.jpeg',
-=======
-      image: '/public/images/drone.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Sports',
       category: 'Sports',
       details: 'An adrenaline-filled day with high-speed drone races and demonstrations.',
@@ -302,11 +238,7 @@ const eventsSlice = createSlice({
       date: '2025-12-28',
       location: 'Delhi',
       seats: 40,
-<<<<<<< HEAD
       image: '/images/winter.jpeg',
-=======
-      image: '/public/images/winter.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Hackathon',
       category: 'Education',
       details: 'A winter-themed coding competition for developers of all levels.',
@@ -318,11 +250,7 @@ const eventsSlice = createSlice({
       date: '2025-12-30',
       location: 'Mumbai',
       seats: 100,
-<<<<<<< HEAD
       image: '/images/pathan.jpeg',
-=======
-      image: '/public/images/pathan.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Movie Screening',
       category: 'Entertainment',
       details: 'Exclusive premiere of the latest Bollywood action thriller.',
@@ -334,11 +262,7 @@ const eventsSlice = createSlice({
       date: '2025-12-31',
       location: 'Delhi',
       seats: 80,
-<<<<<<< HEAD
       image: '/images/r.jpeg',
-=======
-      image: '/public/images/r.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Movie Screening',
       category: 'Entertainment',
       details: 'A romantic drama celebrating love and family.',
@@ -350,11 +274,7 @@ const eventsSlice = createSlice({
       date: '2026-01-05',
       location: 'Chennai',
       seats: 90,
-<<<<<<< HEAD
       image: '/images/j.jpeg',
-=======
-      image: '/public/images/j.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Movie Screening',
       category: 'Entertainment',
       details: 'Special screening of the latest action-packed film.',
@@ -366,11 +286,7 @@ const eventsSlice = createSlice({
       date: '2026-01-10',
       location: 'Bangalore',
       seats: 110,
-<<<<<<< HEAD
       image: '/images/tiger.jpeg',
-=======
-      image: '/public/images/tiger.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Movie Screening',
       category: 'Entertainment',
       details: 'Premiere of the blockbuster spy thriller.',
@@ -382,11 +298,7 @@ const eventsSlice = createSlice({
       date: '2026-01-15',
       location: 'Hyderabad',
       seats: 85,
-<<<<<<< HEAD
       image: '/images/bb.jpeg',
-=======
-      image: '/public/images/bb.jpeg',
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
       type: 'Movie Screening',
       category: 'Entertainment',
       details: 'Launch event for the much-anticipated horror-comedy sequel.',

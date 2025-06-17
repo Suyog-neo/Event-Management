@@ -7,14 +7,10 @@ import {
   List,
   ListItem,
   ListItemText,
-<<<<<<< HEAD
   IconButton,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
-=======
-} from '@mui/material';
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
 
 const dummyBookings = [
   { eventId: 1, userId: 101, username: 'John Doe', seats: ['A1', 'A2'] },
@@ -25,10 +21,7 @@ const dummyBookings = [
 ];
 
 export default function ViewBookings() {
-<<<<<<< HEAD
   const navigate = useNavigate();
-=======
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
   const bookings = useSelector((state) =>
     state.bookings.length ? state.bookings : dummyBookings
   );
@@ -37,7 +30,6 @@ export default function ViewBookings() {
   return (
     <Box
       sx={{
-<<<<<<< HEAD
         height: '100vh',
         overflow: 'hidden',
         display: 'flex',
@@ -146,68 +138,6 @@ export default function ViewBookings() {
           )}
         </Paper>
       </Box>
-=======
-        flexGrow: 1,
-        px: { xs: 2, sm: 4 },
-        py: 4,
-        mx: 'auto',
-        width: '100%',
-        maxWidth: { xs: '100%', sm: '800px', md: '1200px', lg: '1700px' },
-        backgroundColor: '#ffffff',
-        minHeight: '85vh',
-      }}
-    >
-      <Typography
-        variant="h4"
-        gutterBottom
-        sx={{ textAlign: { xs: 'center', sm: 'left' } }}
-      >
-        All Bookings
-      </Typography>
-
-      {bookings.length === 0 ? (
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{ mt: 4, fontSize: { xs: '0.9rem', sm: '1rem' } }}
-        >
-          No bookings made yet.
-        </Typography>
-      ) : (
-        <Paper
-          elevation={3}
-          sx={{
-            mt: 2,
-            p: { xs: 1, sm: 2 },
-          }}
-        >
-          <List>
-            {bookings.map((b, i) => {
-              const event = events.find((e) => e.id === b.eventId);
-              return (
-                <ListItem
-                  key={i}
-                  divider
-                  sx={{
-                    '& .MuiListItemText-primary': {
-                      fontSize: { xs: '0.9rem', sm: '1rem' },
-                    },
-                    '& .MuiListItemText-secondary': {
-                      fontSize: { xs: '0.8rem', sm: '0.9rem' },
-                    },
-                  }}
-                >
-                  <ListItemText
-                    primary={`${event?.title || 'Unknown Event'} - ${b.username}`}
-                    secondary={`📍 ${event?.location || 'N/A'} | 📅 ${event?.date || 'N/A'} | Seats: ${b.seats.join(', ')}`}
-                  />
-                </ListItem>
-              );
-            })}
-          </List>
-        </Paper>
-      )}
->>>>>>> 39081a035bd13aaade5ca62b2560bf5eb27dbd6b
     </Box>
   );
 }
