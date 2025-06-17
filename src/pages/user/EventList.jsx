@@ -25,6 +25,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 
 export default function EventList() {
@@ -151,16 +152,31 @@ export default function EventList() {
     >
       {/* Main Content Area */}
       <Box sx={{ flex: 1 }}>
-        <Typography
-          variant="h3"
-          fontWeight="bold"
-          gutterBottom
-          textAlign="center"
-          color="#3f51b5"
-          sx={{ fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' }, mt: 2 }}
-        >
-          🎟️ Explore All Events
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2, position: 'relative' }}>
+          <IconButton
+            onClick={() => navigate('/user/dashboard')}
+            sx={{
+              position: 'absolute',
+              left: { xs: 16, sm: 24, md: 32 },
+              backgroundColor: '#f5f5f5',
+              '&:hover': {
+                backgroundColor: '#e0e0e0',
+              },
+            }}
+          >
+            <ArrowBackIcon />
+          </IconButton>
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            gutterBottom
+            textAlign="center"
+            color="#3f51b5"
+            sx={{ fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' } }}
+          >
+            🎟️ Explore All Events
+          </Typography>
+        </Box>
 
         {/* Search & Filter */}
         <Box

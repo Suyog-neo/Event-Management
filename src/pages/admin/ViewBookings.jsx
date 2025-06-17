@@ -7,7 +7,10 @@ import {
   List,
   ListItem,
   ListItemText,
+  IconButton,
 } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom';
 
 const dummyBookings = [
   { eventId: 1, userId: 101, username: 'John Doe', seats: ['A1', 'A2'] },
@@ -18,6 +21,7 @@ const dummyBookings = [
 ];
 
 export default function ViewBookings() {
+  const navigate = useNavigate();
   const bookings = useSelector((state) =>
     state.bookings.length ? state.bookings : dummyBookings
   );
@@ -26,66 +30,114 @@ export default function ViewBookings() {
   return (
     <Box
       sx={{
-        flexGrow: 1,
-        px: { xs: 2, sm: 4 },
-        py: 4,
-        mx: 'auto',
-        width: '100%',
-        maxWidth: { xs: '100%', sm: '800px', md: '1200px', lg: '1700px' },
-        backgroundColor: '#ffffff',
-        minHeight: '85vh',
+        height: '100vh',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: '#fff',
       }}
     >
-      <Typography
-        variant="h4"
-        gutterBottom
-        sx={{ textAlign: { xs: 'center', sm: 'left' } }}
+      {/* Header Section */}
+      <Box
+        sx={{
+          position: 'relative',
+          py: 2,
+          px: 3,
+          flexShrink: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
-        All Bookings
-      </Typography>
-
-      {bookings.length === 0 ? (
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{ mt: 4, fontSize: { xs: '0.9rem', sm: '1rem' } }}
+        <IconButton
+          onClick={() => navigate('/admin/dashboard')}
+          sx={{
+            position: 'absolute',
+            left: 16,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            backgroundColor: '#f5f5f5',
+            '&:hover': { backgroundColor: '#e0e0e0' },
+          }}
         >
-          No bookings made yet.
+          <ArrowBackIcon />
+        </IconButton>
+        <Typography variant="h5" fontWeight="bold" textAlign="center">
+          All Bookings
         </Typography>
-      ) : (
+      </Box>
+
+      {/* Content Area */}
+      <Box
+        sx={{
+          flex: 1,
+          px: 3,
+          pb: 3,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          overflow: 'hidden',
+        }}
+      >
         <Paper
           elevation={3}
           sx={{
-            mt: 2,
-            p: { xs: 1, sm: 2 },
+            width: '100%',
+            maxWidth: 800,
+            height: '100%',
+            overflow: 'hidden',
+            p: 2,
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
-          <List>
-            {bookings.map((b, i) => {
-              const event = events.find((e) => e.id === b.eventId);
-              return (
-                <ListItem
-                  key={i}
-                  divider
-                  sx={{
-                    '& .MuiListItemText-primary': {
-                      fontSize: { xs: '0.9rem', sm: '1rem' },
-                    },
-                    '& .MuiListItemText-secondary': {
-                      fontSize: { xs: '0.8rem', sm: '0.9rem' },
-                    },
-                  }}
-                >
-                  <ListItemText
-                    primary={`${event?.title || 'Unknown Event'} - ${b.username}`}
-                    secondary={`📍 ${event?.location || 'N/A'} | 📅 ${event?.date || 'N/A'} | Seats: ${b.seats.join(', ')}`}
-                  />
-                </ListItem>
-              );
-            })}
-          </List>
+          {bookings.length === 0 ? (
+            <Box
+              sx={{
+                flex: 1,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Typography variant="body1" align="center">
+                No bookings made yet.
+              </Typography>
+            </Box>
+          ) : (
+            <List
+              disablePadding
+              sx={{
+                flex: 1,
+                overflow: 'hidden',
+              }}
+            >
+              {bookings.map((b, i) => {
+                const event = events.find((e) => e.id === b.eventId);
+                return (
+                  <ListItem
+                    key={i}
+                    divider
+                    sx={{
+                      '& .MuiListItemText-primary': {
+                        fontSize: { xs: '0.9rem', sm: '1rem' },
+                      },
+                      '& .MuiListItemText-secondary': {
+                        fontSize: { xs: '0.8rem', sm: '0.9rem' },
+                      },
+                    }}
+                  >
+                    <ListItemText
+                      primary={`${event?.title || 'Unknown Event'} - ${b.username}`}
+                      secondary={`📍 ${event?.location || 'N/A'} | 📅 ${event?.date || 'N/A'} | Seats: ${b.seats.join(', ')}`}
+                    />
+                  </ListItem>
+                );
+              })}
+            </List>
+          )}
         </Paper>
-      )}
+      </Box>
     </Box>
   );
 }

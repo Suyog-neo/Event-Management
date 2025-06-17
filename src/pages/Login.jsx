@@ -43,11 +43,13 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [credentials, setCredentials] = useState({ username: '', email: '', password: '' });
+  const [credentials, setCredentials] = useState({ username: '', email: '', password: '', otp: '' });
   const [fieldErrors, setFieldErrors] = useState({});
   const [mode, setMode] = useState('login');
   const [showPassword, setShowPassword] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
+  const [otpSent, setOtpSent] = useState(false);
+  const [otpVerified, setOtpVerified] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +60,7 @@ export default function Login() {
   const handleModeChange = (event, newMode) => {
     if (newMode !== null) {
       setMode(newMode);
-      setCredentials({ username: '', email: '', password: '' });
+      setCredentials({ username: '', email: '', password: '', otp: '' });
       setFieldErrors({});
     }
   };
@@ -66,14 +68,48 @@ export default function Login() {
   const handleCloseSnackbar = () => setSnackbar({ ...snackbar, open: false });
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
+  const handleSendOTP = () => {
+    const { email } = credentials;
+    if (!email) {
+      setFieldErrors({ email: 'Email is required to send OTP' });
+      return;
+    }
+    // Here you would typically make an API call to send OTP
+    // For now, we'll simulate it
+    setOtpSent(true);
+    setSnackbar({ open: true, message: 'OTP sent to your email!', severity: 'success' });
+  };
+
+  const handleVerifyOTP = () => {
+    const { otp } = credentials;
+    if (!otp) {
+      setFieldErrors({ otp: 'Please enter the OTP' });
+      return;
+    }
+    // Here you would typically verify the OTP with your backend
+    // For now, we'll simulate it with any 6-digit number
+    if (otp.length === 6) {
+      setOtpVerified(true);
+      setSnackbar({ open: true, message: 'OTP verified successfully!', severity: 'success' });
+    } else {
+      setSnackbar({ open: true, message: 'Invalid OTP. Please try again.', severity: 'error' });
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password } = credentials;
+    const { username, email, password, otp } = credentials;
     const errors = {};
 
     if (!username) errors.username = 'Username is required';
     if (!password) errors.password = 'Password is required';
-    if (mode === 'register' && !email) errors.email = 'Email is required';
+    if (mode === 'register') {
+      if (!email) errors.email = 'Email is required';
+      if (!otpVerified) {
+        setSnackbar({ open: true, message: 'Please verify your email with OTP first.', severity: 'error' });
+        return;
+      }
+    }
 
     setFieldErrors(errors);
     if (Object.keys(errors).length > 0) return;
@@ -95,7 +131,9 @@ export default function Login() {
     } else {
       setSnackbar({ open: true, message: 'Account created successfully! You can now log in.', severity: 'success' });
       setMode('login');
-      setCredentials({ username: '', email: '', password: '' });
+      setCredentials({ username: '', email: '', password: '', otp: '' });
+      setOtpSent(false);
+      setOtpVerified(false);
     }
   };
 
@@ -201,18 +239,70 @@ export default function Login() {
                   helperText={fieldErrors.username}
                 />
                 {mode === 'register' && (
-                  <TextField
-                    fullWidth
-                    label="Email"
-                    name="email"
-                    type="email"
-                    value={credentials.email}
-                    onChange={handleChange}
-                    margin="normal"
-                    variant="outlined"
-                    error={!!fieldErrors.email}
-                    helperText={fieldErrors.email}
-                  />
+                  <>
+                    <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mt: 2 }}>
+                      <TextField
+                        fullWidth
+                        label="Email"
+                        name="email"
+                        type="email"
+                        value={credentials.email}
+                        onChange={handleChange}
+                        variant="outlined"
+                        error={!!fieldErrors.email}
+                        helperText={fieldErrors.email}
+                        disabled={otpSent}
+                      />
+                      <Typography
+                        onClick={handleSendOTP}
+                        sx={{
+                          color: '#0288d1',
+                          textDecoration: 'underline',
+                          cursor: 'pointer',
+                          whiteSpace: 'nowrap',
+                          opacity: otpSent ? 0.5 : 1,
+                          pointerEvents: otpSent ? 'none' : 'auto',
+                          '&:hover': {
+                            color: '#01579b',
+                          },
+                        }}
+                      >
+                        Send OTP
+                      </Typography>
+                    </Box>
+                    {otpSent && (
+                      <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mt: 2 }}>
+                        <TextField
+                          fullWidth
+                          label="Enter OTP"
+                          name="otp"
+                          value={credentials.otp}
+                          onChange={handleChange}
+                          variant="outlined"
+                          error={!!fieldErrors.otp}
+                          helperText={fieldErrors.otp}
+                          disabled={otpVerified}
+                          inputProps={{ maxLength: 6 }}
+                        />
+                        <Typography
+                          onClick={handleVerifyOTP}
+                          sx={{
+                            color: '#0288d1',
+                            textDecoration: 'underline',
+                            cursor: 'pointer',
+                            whiteSpace: 'nowrap',
+                            opacity: otpVerified ? 0.5 : 1,
+                            pointerEvents: otpVerified ? 'none' : 'auto',
+                            '&:hover': {
+                              color: '#01579b',
+                            },
+                          }}
+                        >
+                          Verify OTP
+                        </Typography>
+                      </Box>
+                    )}
+                  </>
                 )}
                 <TextField
                   fullWidth
@@ -254,7 +344,7 @@ export default function Login() {
                 color: 'white',
               }}
             >
-              {mode === 'login' ? 'Login' : 'Sign Up'}
+              {mode === 'login' ? 'Login' : 'Create Account'}
             </Button>
 
             {mode === 'login' && (

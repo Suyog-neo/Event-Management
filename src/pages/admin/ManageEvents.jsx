@@ -18,10 +18,13 @@ import {
   DialogActions,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Pagination from '@mui/material/Pagination';
+import { useNavigate } from 'react-router-dom';
 
 export default function ManageEvents() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const events = useSelector((state) => state.events);
   const [page, setPage] = useState(1);
   const eventsPerPage = 7;
@@ -106,16 +109,31 @@ export default function ManageEvents() {
         background: '#ffffff',
       }}
     >
-      <Typography
-        variant="h4"
-        gutterBottom
-        sx={{
-          textAlign: { xs: 'center', sm: 'left' },
-          fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
-        }}
-      >
-        Manage Events
-      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+        <IconButton
+          onClick={() => navigate('/admin/dashboard')}
+          sx={{
+            position: 'absolute',
+            left: { xs: 16, sm: 24, md: 32 },
+            backgroundColor: '#f5f5f5',
+            '&:hover': {
+              backgroundColor: '#e0e0e0',
+            },
+          }}
+        >
+          <ArrowBackIcon />
+        </IconButton>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{
+            textAlign: { xs: 'center', sm: 'left' },
+            fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
+          }}
+        >
+          Manage Events
+        </Typography>
+      </Box>
 
       <Paper
         elevation={3}
